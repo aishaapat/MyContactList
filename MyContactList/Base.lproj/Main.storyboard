@@ -30,7 +30,7 @@
                             <constraint firstItem="bbQ-aO-PRh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="175" id="hmh-1m-xO0"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Contacts" id="fzI-rT-5mc"/>
+                    <tabBarItem key="tabBarItem" systemItem="contacts" id="fzI-rT-5mc"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -82,7 +82,7 @@
                             <constraint firstItem="iyB-An-kPo" firstAttribute="leading" secondItem="FNC-GN-ljE" secondAttribute="leading" constant="154" id="yKQ-uV-Y0x"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" id="e6l-5d-0fa"/>
+                    <tabBarItem key="tabBarItem" title="Settings" selectedImage="SettingsIcon" id="e6l-5d-0fa"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dbA-3B-9CW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -114,7 +114,7 @@
                             <constraint firstItem="Xl7-Jn-3AM" firstAttribute="centerX" secondItem="ETr-G8-Iqp" secondAttribute="centerX" id="aSt-FW-LWK"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Map" id="cjb-2z-MD9"/>
+                    <tabBarItem key="tabBarItem" title="Map" selectedImage="maps" id="cjb-2z-MD9"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2cw-AK-BWM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -122,6 +122,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="SettingsIcon" width="20" height="20"/>
+        <image name="maps" width="20" height="12"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
