@@ -8,17 +8,29 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Contacts-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MyContactList" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <viewController title="Contacts" id="BYZ-38-t0r" customClass="ContactsViewController" customModule="MyContactList" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="View">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contacts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bbQ-aO-PRh">
+                                <rect key="frame" x="175" y="374" width="69" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="bbQ-aO-PRh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="256" id="gTd-cw-338"/>
+                            <constraint firstItem="bbQ-aO-PRh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="175" id="hmh-1m-xO0"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="fzI-rT-5mc"/>
+                    <tabBarItem key="tabBarItem" title="Contacts" id="fzI-rT-5mc"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -44,33 +56,65 @@
             </objects>
             <point key="canvasLocation" x="-25.190839694656489" y="3.5211267605633805"/>
         </scene>
-        <!--Item-->
+        <!--Settings-->
         <scene sceneID="C3Y-BP-jdt">
             <objects>
-                <viewController id="utA-2M-fsV" sceneMemberID="viewController">
+                <viewController title="Settings" id="utA-2M-fsV" customClass="SettingsViewController" customModule="MyContactList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dFN-QU-lWP">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iyB-An-kPo">
+                                <rect key="frame" x="154" y="403" width="75" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="42" id="TO0-lD-MQI"/>
+                                    <constraint firstAttribute="height" constant="21" id="bz6-DL-uSH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="FNC-GN-ljE"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="iyB-An-kPo" firstAttribute="top" secondItem="FNC-GN-ljE" secondAttribute="top" constant="285" id="HzS-Ek-xlR"/>
+                            <constraint firstItem="iyB-An-kPo" firstAttribute="leading" secondItem="FNC-GN-ljE" secondAttribute="leading" constant="154" id="yKQ-uV-Y0x"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="e6l-5d-0fa"/>
+                    <tabBarItem key="tabBarItem" title="Settings" id="e6l-5d-0fa"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dbA-3B-9CW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-40" y="-673"/>
+            <point key="canvasLocation" x="-40.458015267175568" y="-673.23943661971839"/>
         </scene>
-        <!--Item-->
+        <!--Map-->
         <scene sceneID="Ded-kM-Gqy">
             <objects>
-                <viewController id="3J2-SP-ywk" sceneMemberID="viewController">
+                <viewController title="Map" id="3J2-SP-ywk" customClass="MapViewController" customModule="MyContactList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ETr-G8-Iqp">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MAP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xl7-Jn-3AM">
+                                <rect key="frame" x="175.66666666666666" y="415.66666666666669" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="42" id="7HU-mS-T3I"/>
+                                    <constraint firstAttribute="height" constant="21" id="Jhw-0I-3Si"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="yFX-O2-HfG"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Xl7-Jn-3AM" firstAttribute="centerY" secondItem="ETr-G8-Iqp" secondAttribute="centerY" id="Q5i-jr-b5E"/>
+                            <constraint firstItem="Xl7-Jn-3AM" firstAttribute="centerX" secondItem="ETr-G8-Iqp" secondAttribute="centerX" id="aSt-FW-LWK"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="cjb-2z-MD9"/>
+                    <tabBarItem key="tabBarItem" title="Map" id="cjb-2z-MD9"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2cw-AK-BWM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
