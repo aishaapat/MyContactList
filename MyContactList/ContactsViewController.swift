@@ -85,6 +85,7 @@ class ContactsViewController: UIViewController {
                 textField.isEnabled = false
                 textField.borderStyle = .none
             }
+            btnChange.isHidden = true
         }
         else if sgmtEditMode.selectedSegmentIndex == 1 {
             for textField in textFields {
