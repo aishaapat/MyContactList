@@ -178,6 +178,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="contacts" id="fzI-rT-5mc"/>
+                    <connections>
+                        <outlet property="scrollView" destination="3mW-fq-hMq" id="qHy-GA-FGj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
