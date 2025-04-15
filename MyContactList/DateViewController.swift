@@ -1,29 +1,25 @@
-//
-//  DateViewController.swift
-//  MyContactList
-//
-//  Created by Amishi Patel on 4/15/25.
-//
-
 import UIKit
 
+protocol DateControllerDelegate: AnyObject {
+    func dataChanged(date: Date)
+}
+
 class DateViewController: UIViewController {
+
+    weak var delegate: DateControllerDelegate?
+
+    @IBOutlet weak var dtpDate: UIDatePicker!  // Make sure it's connected in storyboard
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        let saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveDate))
+        self.navigationItem.rightBarButtonItem = saveButton
+        self.title = "Pick Birthdate"
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc func saveDate() {
+        delegate?.dataChanged(date: dtpDate.date)
+        navigationController?.popViewController(animated: true)
     }
-    */
-
 }

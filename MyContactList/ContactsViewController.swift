@@ -6,11 +6,26 @@
 //
 
 import UIKit
+import CoreData
 
-class ContactsViewController: UIViewController {
+class ContactsViewController: UIViewController, UITextFieldDelegate, DateControllerDelegate {
+    func dataChanged(date: Date) {
+        if currentContact == nil{
+            let context = appDelegate.persistentContainer.viewContext
+            currentContact = Contact(context: context)
+        }
+        currentContact?.birthday = date
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        lblBirthdaye.text = formatter.string(from: date)
+    }
+    
     @IBOutlet weak var txtName: UITextField!
     @IBOutlet weak var txtCity: UITextField!
     @IBOutlet weak var txtAddress: UITextField!
+    
+    var currentContact: Contact?
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     @IBOutlet weak var sgmtEditMode: UISegmentedControl!
     @IBOutlet weak var btnChange: UIButton!
@@ -20,7 +35,9 @@ class ContactsViewController: UIViewController {
     @IBOutlet weak var txtCell: UITextField!
     @IBOutlet weak var txtZip: UITextField!
     @IBOutlet weak var txtState: UITextField!
-    @IBAction func changeEditMode(_ sender: Any) {
+    @IBAction func changeEditMode(_ sender: Any)
+    {
+ 
     }
     
     @IBOutlet weak var scrollView: UIScrollView!  // Changed to UIScrollView
@@ -29,6 +46,39 @@ class ContactsViewController: UIViewController {
         super.viewDidLoad()
         registerKeyBoardNotifications()
         sgmtEditMode.addTarget(self, action: #selector(changeEditMode(sender:)), for: .valueChanged)
+        let textFields: [UITextField] = [txtName,txtAddress,txtCity,txtState,txtZip,txtPhone,txtCell,txtEmail]
+        for textfield in textFields {
+            textfield.addTarget(self, action: #selector(textFieldDidEndEditing(_:)), for: .editingDidEnd)
+
+        }
+    }
+    
+    @objc func textFieldDidEndEditing(_ textField: UITextField) {
+        if currentContact == nil {
+            let context = appDelegate.persistentContainer.viewContext
+            currentContact = Contact(context: context)
+        }
+
+        switch textField {
+        case txtName:
+            currentContact?.contactName = textField.text
+        case txtAddress:
+            currentContact?.streetAddress = textField.text
+        case txtCity:
+            currentContact?.city = textField.text
+        case txtState:
+            currentContact?.state = textField.text
+        case txtZip:
+            currentContact?.zipCode = textField.text
+        case txtPhone:
+            currentContact?.phoneNumber = textField.text
+        case txtCell:
+            currentContact?.cellNumber = textField.text
+        case txtEmail:
+            currentContact?.email = textField.text
+        default:
+            break
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -93,9 +143,23 @@ class ContactsViewController: UIViewController {
                 textField.borderStyle = .roundedRect
             }
             btnChange.isHidden = false
+            navigationItem.rightBarButtonItem = nil
+            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(self.saveContact))
         }
     }
-
+    
+    @objc func saveContact(){
+        appDelegate.saveContext()
+        sgmtEditMode.selectedSegmentIndex = 0
+        changeEditMode(self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "sequeContactDate"){
+            let dateController = segue.destination as! DateViewController
+            dateController.delegate = self
+        }
+    }
 
 }
 
