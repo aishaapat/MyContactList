@@ -269,7 +269,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cle-fG-KJ1">
-                                        <rect key="frame" x="0.0" y="20.333333333333314" width="320" height="216"/>
+                                        <rect key="frame" x="0.0" y="20" width="320" height="216"/>
                                     </pickerView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="rRx-Ld-ET4">
                                         <rect key="frame" x="0.0" y="236.33333333333337" width="320" height="31"/>
@@ -298,6 +298,10 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" selectedImage="SettingsIcon" id="e6l-5d-0fa"/>
+                    <connections>
+                        <outlet property="pckSortField" destination="cle-fG-KJ1" id="Ivu-66-eF3"/>
+                        <outlet property="swAscending" destination="cWr-A4-Sxd" id="rNp-Mz-Led"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dbA-3B-9CW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
