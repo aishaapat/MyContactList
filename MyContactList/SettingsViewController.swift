@@ -39,4 +39,17 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         let selectedItem = sortOrderItems[row]
         print("Selected sort field: \(selectedItem)")
     }
+    override func viewWillAppear(_ animated: Bool) {
+        let settings = UserDefaults.standard
+        swAscending.setOn(settings.bool(forKey: "sortDirectionAscending"), animated: true)
+        let sortField = settings.string(forKey: "sortField")
+        var i = 0
+        for field in sortOrderItems {
+            if field == sortField {
+                pckSortField.selectRow(i, inComponent: 0, animated: false)
+            }
+            i += 1
+        }
+        pckSortField.reloadComponent(0)
+    }
 }
