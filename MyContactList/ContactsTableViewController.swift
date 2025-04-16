@@ -90,6 +90,29 @@ class ContactsTableViewController: UITableViewController {
             
         }
     }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            let selectedContact = contacts[indexPath.row] as? Contact
+            let name = selectedContact!.contactName!
+            let actionHandler = {
+                (action: UIAlertAction!) -> Void in
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let controller = storyboard.instantiateViewController(withIdentifier: "ContactController") as? ContactsViewController
+                
+                controller?.currentContact = selectedContact
+                self.navigationController?.pushViewController(controller!, animated: true)
+            }
+            
+            let alertController = UIAlertController(title: "Contact selected", message: "Selected Row: \(indexPath.row) (\(name))",
+                                                    preferredStyle: .alert)
+            
+            let actionCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            let actionDetails = UIAlertAction(title: "Show Details", style: .default, handler: actionHandler)
+            
+            alertController.addAction(actionCancel)
+            alertController.addAction(actionDetails)
+            
+            present(alertController, animated: true, completion: nil)
+        }
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
