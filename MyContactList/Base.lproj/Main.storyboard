@@ -17,10 +17,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="qtm-ef-tJ7" customClass="ContactCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ContactCell" id="XhF-5m-3Zi">
                                 <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qtm-ef-tJ7" id="74q-Fh-red">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XhF-5m-3Zi" id="5Rs-EF-IKR">
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
@@ -31,7 +31,13 @@
                             <outlet property="delegate" destination="JrW-dF-eOR" id="7eX-TV-lRI"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="kj8-Je-1lz"/>
+                    <navigationItem key="navigationItem" id="kj8-Je-1lz">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="dzk-W0-qan">
+                            <connections>
+                                <segue destination="BYZ-38-t0r" kind="show" id="q9O-Gc-qxp"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yJg-4A-yO7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -46,7 +52,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="qay-kD-s9O">
-                                <rect key="frame" x="39" y="209" width="315" height="575"/>
+                                <rect key="frame" x="39" y="253" width="315" height="482"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="v5v-Xm-RAj">
                                         <rect key="frame" x="23.333333333333343" y="0.0" width="294.33333333333326" height="429"/>
@@ -155,7 +161,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="55N-fE-3P8">
-                                                <rect key="frame" x="0.0" y="394.66666666666669" width="294.33333333333331" height="34.333333333333314"/>
+                                                <rect key="frame" x="0.0" y="394.66666666666663" width="294.33333333333331" height="34.333333333333314"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Birthday:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2HY-9f-zgq">
                                                         <rect key="frame" x="0.0" y="0.0" width="68.333333333333329" height="34.333333333333336"/>
@@ -192,7 +198,7 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="fjo-tj-Sqy"/>
                             </scrollView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Xf3-Hs-yO9">
-                                <rect key="frame" x="147" y="161" width="99" height="32"/>
+                                <rect key="frame" x="147" y="205" width="99" height="32"/>
                                 <segments>
                                     <segment title="View"/>
                                     <segment title="Edit"/>
@@ -238,11 +244,11 @@
             <objects>
                 <viewController title="Birthdate" id="UE9-oT-fub" customClass="DateViewController" customModule="MyContactList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BEG-LS-095">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="16a-np-dnW">
-                                <rect key="frame" x="127" y="133" width="139" height="531"/>
+                                <rect key="frame" x="127" y="236" width="139" height="380"/>
                             </datePicker>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="W7r-of-tw2"/>
