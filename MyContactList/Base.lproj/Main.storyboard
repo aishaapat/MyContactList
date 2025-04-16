@@ -24,6 +24,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="EditContact" id="Tjb-NP-XHH"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -34,7 +37,7 @@
                     <navigationItem key="navigationItem" id="kj8-Je-1lz">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="dzk-W0-qan">
                             <connections>
-                                <segue destination="BYZ-38-t0r" kind="show" id="q9O-Gc-qxp"/>
+                                <segue destination="BYZ-38-t0r" kind="show" identifier="AddContact" id="q9O-Gc-qxp"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -397,6 +400,9 @@
             <point key="canvasLocation" x="969" y="115"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Tjb-NP-XHH"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="SettingsIcon" width="20" height="20"/>
         <image name="location.circle" catalog="system" width="128" height="123"/>

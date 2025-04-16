@@ -42,14 +42,32 @@ class ContactsViewController: UIViewController, UITextFieldDelegate, DateControl
     
     @IBOutlet weak var scrollView: UIScrollView!  // Changed to UIScrollView
 
-    override func viewDidLoad() {
+    override func viewDidLoad(){
         super.viewDidLoad()
-        registerKeyBoardNotifications()
-        sgmtEditMode.addTarget(self, action: #selector(changeEditMode(sender:)), for: .valueChanged)
-        let textFields: [UITextField] = [txtName,txtAddress,txtCity,txtState,txtZip,txtPhone,txtCell,txtEmail]
-        for textfield in textFields {
-            textfield.addTarget(self, action: #selector(textFieldDidEndEditing(_:)), for: .editingDidEnd)
-
+        if currentContact != nil {
+            txtName.text = currentContact!.contactName
+            txtAddress.text = currentContact!.streetAddress
+            txtCity.text = currentContact!.city
+            txtState.text = currentContact!.state
+            txtZip.text = currentContact!.zipCode
+            txtPhone.text = currentContact!.phoneNumber
+            txtCell.text = currentContact!.cellNumber
+            txtEmail.text = currentContact!.email
+            let formatter = DateFormatter()
+            formatter.dateStyle = .short
+            if currentContact!.birthday != nil {
+                lblBirthdaye.text = formatter.string(from: currentContact!.birthday!)
+            }
+        }
+        
+        changeEditMode(self)
+        let textFields: [UITextField] = [txtName, txtAddress, txtCity, txtState, txtZip, txtPhone, txtCell, txtEmail]
+        
+        for textfield in textFields{
+            textfield.addTarget(self,
+                                action: #selector(UITextFieldDelegate.textFieldShouldEndEditing(_:)),
+                                for: UIControl.Event.editingDidEnd)
+            
         }
     }
     
