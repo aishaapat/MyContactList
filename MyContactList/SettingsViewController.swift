@@ -12,7 +12,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBOutlet weak var swAscending: UISwitch!
     @IBOutlet weak var pckSortField: UIPickerView!
 
-    let sortOrderItems: [String] = ["ContactName", "City", "Birthday"]
+    let sortOrderItems: Array<String> = ["contactName", "city", "birthday"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
