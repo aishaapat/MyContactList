@@ -15,6 +15,7 @@ class ContactsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadDataFromDatabase()
+        self.navigationItem.leftBarButtonItem = self.editButtonItem
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -62,6 +63,31 @@ class ContactsTableViewController: UITableViewController {
             let selectedRow = self.tableView.indexPath(for: sender as! UITableViewCell)?.row
             let selectedContact = contacts[selectedRow!] as? Contact
             contactController?.currentContact = selectedContact
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        loadDataFromDatabase()
+        tableView.reloadData()
+    }
+    
+    override func tableView(_ tableView: UITableView,
+                            commit editingStyle: UITableViewCell.EditingStyle,
+                            forRowAt indexPath: IndexPath){
+        if editingStyle == .delete {
+            let contact = contacts[indexPath.row] as? Contact
+            let context = appDelegate.persistentContainer.viewContext
+            context.delete(contact!)
+            do {
+                try context.save()
+            } catch {
+                fatalError("Error saving context: \(error)")
+                
+            }
+            loadDataFromDatabase()
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
+            
         }
     }
 
