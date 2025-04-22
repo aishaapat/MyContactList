@@ -36,6 +36,7 @@ class ContactsTableViewController: UITableViewController {
         
         let sortDescriptor = NSSortDescriptor(key:sortField, ascending: sortAscending)
         let sortDescriptorArray = [sortDescriptor]
+        request.sortDescriptors = [sortDescriptor]
         do {
             contacts = try context.fetch(request)
         } catch let error as NSError {
@@ -60,6 +61,7 @@ class ContactsTableViewController: UITableViewController {
         let contact = contacts[indexPath.row] as? Contact
         cell.textLabel?.text = contact?.contactName
         cell.detailTextLabel?.text = contact?.city
+        cell.detailTextLabel?.text = contact?.email
         cell.accessoryType = UITableViewCell.AccessoryType .detailDisclosureButton
         return cell
     }

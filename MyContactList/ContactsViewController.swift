@@ -37,6 +37,25 @@ class ContactsViewController: UIViewController, UITextFieldDelegate, DateControl
     @IBOutlet weak var txtState: UITextField!
     @IBAction func changeEditMode(_ sender: Any)
     {
+        let textFields: [UITextField] =
+        [txtZip, txtCell, txtCity, txtName, txtEmail, txtPhone, txtState, txtAddress]
+
+        if sgmtEditMode.selectedSegmentIndex == 0 {
+            for textField in textFields {
+                textField.isEnabled = false
+                textField.borderStyle = .none
+            }
+            btnChange.isHidden = true
+        }
+        else if sgmtEditMode.selectedSegmentIndex == 1 {
+            for textField in textFields {
+                textField.isEnabled = true
+                textField.borderStyle = .roundedRect
+            }
+            btnChange.isHidden = false
+            navigationItem.rightBarButtonItem = nil
+            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(self.saveContact))
+        }
  
     }
     
@@ -65,8 +84,9 @@ class ContactsViewController: UIViewController, UITextFieldDelegate, DateControl
         
         for textfield in textFields{
             textfield.addTarget(self,
-                                action: #selector(UITextFieldDelegate.textFieldShouldEndEditing(_:)),
-                                for: UIControl.Event.editingDidEnd)
+                action: #selector(self.textFieldDidEndEditing(_:)),
+                for: .editingDidEnd)
+
             
         }
     }
@@ -101,10 +121,10 @@ class ContactsViewController: UIViewController, UITextFieldDelegate, DateControl
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.unregisterKeyBoardNotifications()
+        
     }
 
-    func registerKeyBoardNotifications() {
+  /**  func registerKeyBoardNotifications() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardDidShow(notification:)),
                                                name: UIResponder.keyboardDidShowNotification,
@@ -114,13 +134,13 @@ class ContactsViewController: UIViewController, UITextFieldDelegate, DateControl
                                                selector: #selector(keyboardWillHide(notification:)),
                                                name: UIResponder.keyboardWillHideNotification,
                                                object: nil)
-    }
+    } */
     
-    func unregisterKeyBoardNotifications() {
+  /**  func unregisterKeyBoardNotifications() {
         NotificationCenter.default.removeObserver(self)
-    }
+    } */
     
-    @objc func keyboardDidShow(notification: NSNotification) {
+  /** @objc func keyboardDidShow(notification: NSNotification) {
         if let userInfo = notification.userInfo,
            let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             
@@ -130,41 +150,20 @@ class ContactsViewController: UIViewController, UITextFieldDelegate, DateControl
             scrollView.contentInset = contentInset
             scrollView.scrollIndicatorInsets = contentInset
         }
-    }
+    } */
 
-    @objc func keyboardWillHide(notification: NSNotification) {
+   /** @objc func keyboardWillHide(notification: NSNotification) {
         var contentInset = scrollView.contentInset
         contentInset.bottom = 0
         scrollView.contentInset = contentInset
         scrollView.scrollIndicatorInsets = UIEdgeInsets.zero
     }
-    
+    */
     // adding button stuff for birthday now
     override func didReceiveMemoryWarning(){
         super.didReceiveMemoryWarning()
     }
     
-    @IBAction func changeEditMode(sender: Any) {
-        let textFields: [UITextField] =
-        [txtZip, txtCell, txtCity, txtName, txtEmail, txtPhone, txtState, txtAddress]
-
-        if sgmtEditMode.selectedSegmentIndex == 0 {
-            for textField in textFields {
-                textField.isEnabled = false
-                textField.borderStyle = .none
-            }
-            btnChange.isHidden = true
-        }
-        else if sgmtEditMode.selectedSegmentIndex == 1 {
-            for textField in textFields {
-                textField.isEnabled = true
-                textField.borderStyle = .roundedRect
-            }
-            btnChange.isHidden = false
-            navigationItem.rightBarButtonItem = nil
-            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(self.saveContact))
-        }
-    }
     
     @objc func saveContact(){
         appDelegate.saveContext()
