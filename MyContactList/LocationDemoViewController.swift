@@ -9,7 +9,7 @@ import UIKit
 import CoreLocation
 
 class LocationDemoViewController:
-    UIViewController {
+    UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var txtStreet: UITextField!
     @IBOutlet weak var txtCity: UITextField!
     @IBOutlet weak var lblLocationAccuracy: UILabel!
@@ -22,6 +22,9 @@ class LocationDemoViewController:
     
     @IBOutlet weak var lblAltitude: UILabel!
     @IBOutlet weak var lblAltitudeAccuracy: UILabel!
+    lazy var geoCoder = CLGeocoder()
+    var locationManager: CLLocationManager!
+    
     override func viewDidLoad() {
         lblHeading.text = ""
         lblAltitude.text = ""
@@ -31,12 +34,34 @@ class LocationDemoViewController:
         lblAltitudeAccuracy.text = ""
         lblLocationAccuracy.text = ""
         
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last
+        {
+            let eventDate = location.timestamp
+            let howRecent = eventDate.timeIntervalSinceNow
+            if (Double(howRecent) < 15.0)
+            {
+                let coordinate = location.coordinate
+                lblLongitude.text = String(format: "%g\u{00B0}",coordinate.longitude)
+                lblLatitude.text = String(format: "%g\u{00B0}",coordinate.latitude)
+                lblLocationAccuracy.text = String(format: "%g\u{00B0}", location.horizontalAccuracy)
+                lblAltitude.text = String(format: "%g\u{00B0}", location.altitude)
+                lblAltitudeAccuracy.text = String(format: "%g\u{00B0}", location.verticalAccuracy)
+
+            }
+        }
+        
+    }
     
-    lazy var geoCoder = CLGeocoder()
+
 
 
     @IBAction func addressToCoordinates(_ sender: Any) {
@@ -68,8 +93,19 @@ class LocationDemoViewController:
 
     @IBAction func deviceCoordinates(_ sender: Any)
     {
+        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        locationManager.distanceFilter = 100
+        locationManager.startUpdatingLocation()
+        locationManager.startUpdatingHeading()
         
     }
+    override func viewDidDisappear(_ animated: Bool) {
+        locationManager.stopUpdatingLocation()
+        locationManager.stopUpdatingHeading()
+    }
+    
+
+
     
 
    
