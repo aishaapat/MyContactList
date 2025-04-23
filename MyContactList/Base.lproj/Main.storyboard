@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="orQ-pb-SyD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="psO-zr-Snv">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -408,18 +409,21 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f2c-os-Nd7">
                                 <rect key="frame" x="175" y="456" width="42" height="21"/>
+                                <accessibility key="accessibilityConfiguration" label="&quot;&quot;"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kA7-uN-0Fd">
                                 <rect key="frame" x="175" y="487" width="42" height="21"/>
+                                <accessibility key="accessibilityConfiguration" label="&quot;&quot;"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Bv-7x-RR9">
                                 <rect key="frame" x="176.33333333333334" y="515" width="41.333333333333343" height="21"/>
+                                <accessibility key="accessibilityConfiguration" label="&quot;&quot;"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -462,24 +466,28 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wVo-mB-OPW">
                                 <rect key="frame" x="175" y="585" width="42" height="21"/>
+                                <accessibility key="accessibilityConfiguration" label="&quot;&quot;"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XDP-9J-DdG">
                                 <rect key="frame" x="175" y="615" width="42" height="21"/>
+                                <accessibility key="accessibilityConfiguration" label="&quot;&quot;"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WVg-l5-thu">
                                 <rect key="frame" x="175" y="686" width="42" height="21"/>
+                                <accessibility key="accessibilityConfiguration" label="&quot;&quot;"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7wO-gn-dCh">
                                 <rect key="frame" x="175" y="715" width="42" height="21"/>
+                                <accessibility key="accessibilityConfiguration" label="&quot;&quot;"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -555,39 +563,52 @@
             </objects>
             <point key="canvasLocation" x="-1419.0839694656488" y="-73.239436619718319"/>
         </scene>
-        <!--Map-->
+        <!--mapView-->
         <scene sceneID="Ded-kM-Gqy">
             <objects>
-                <viewController title="Map" id="3J2-SP-ywk" customClass="MapViewController" customModule="MyContactList" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="mapView" id="3J2-SP-ywk" customClass="MapViewController" customModule="MyContactList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ETr-G8-Iqp">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MAP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xl7-Jn-3AM">
-                                <rect key="frame" x="175.66666666666666" y="415.66666666666669" width="42" height="21"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oh7-hz-4PW">
+                                <rect key="frame" x="0.0" y="0.0" width="417" height="703"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="42" id="7HU-mS-T3I"/>
-                                    <constraint firstAttribute="height" constant="21" id="Jhw-0I-3Si"/>
+                                    <constraint firstAttribute="width" constant="393" id="RLi-6Q-MSq"/>
+                                    <constraint firstAttribute="height" constant="704" id="kGC-AZ-u0x"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <standardMapConfiguration key="preferredConfiguration"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nZL-Yj-e7U">
+                                <rect key="frame" x="259" y="51" width="90" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Find Me!"/>
+                                <connections>
+                                    <action selector="findUser:" destination="3J2-SP-ywk" eventType="touchUpInside" id="xdm-rx-l9u"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="yFX-O2-HfG"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Xl7-Jn-3AM" firstAttribute="centerY" secondItem="ETr-G8-Iqp" secondAttribute="centerY" id="Q5i-jr-b5E"/>
-                            <constraint firstItem="Xl7-Jn-3AM" firstAttribute="centerX" secondItem="ETr-G8-Iqp" secondAttribute="centerX" id="aSt-FW-LWK"/>
+                            <constraint firstItem="Oh7-hz-4PW" firstAttribute="leading" secondItem="ETr-G8-Iqp" secondAttribute="leading" id="28S-7W-N5e"/>
+                            <constraint firstItem="Oh7-hz-4PW" firstAttribute="top" secondItem="nZL-Yj-e7U" secondAttribute="bottom" constant="-86" id="UIS-ey-deZ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="nZL-Yj-e7U" secondAttribute="trailing" constant="28" id="Vz5-kN-jl2"/>
+                            <constraint firstItem="nZL-Yj-e7U" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ETr-G8-Iqp" secondAttribute="leading" constant="20" symbolic="YES" id="cf2-DG-PxG"/>
+                            <constraint firstItem="Oh7-hz-4PW" firstAttribute="top" secondItem="ETr-G8-Iqp" secondAttribute="top" id="p71-wL-Uev"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" selectedImage="location.circle" catalog="system" id="cjb-2z-MD9">
                         <color key="badgeColor" systemColor="groupTableViewBackgroundColor"/>
                     </tabBarItem>
+                    <connections>
+                        <outlet property="findUser" destination="nZL-Yj-e7U" id="lSB-fk-lze"/>
+                        <outlet property="mapView" destination="Oh7-hz-4PW" id="wor-OT-P9B"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2cw-AK-BWM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-711" y="-73"/>
+            <point key="canvasLocation" x="-712.2137404580152" y="-73.239436619718319"/>
         </scene>
         <!--Birthdate-->
         <scene sceneID="MIA-yY-naF">

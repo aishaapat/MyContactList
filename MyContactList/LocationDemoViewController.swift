@@ -42,7 +42,17 @@ class LocationDemoViewController:
 
         // Do any additional setup after loading the view.
     }
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse {
+            print("Permision granted")
+        }
+        else {
+            print("Permission NOT granted")
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
+    {
         if let location = locations.last
         {
             let eventDate = location.timestamp
@@ -60,12 +70,45 @@ class LocationDemoViewController:
         }
         
     }
+    func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
+        if newHeading.headingAccuracy > 0
+        {
+            let theHeading = newHeading.trueHeading
+                var direction: String
+                switch theHeading {
+                case 225..<315:
+                    direction = "W"
+                case 135..<225:
+                    direction = "S"
+                case 45..<135:
+                    direction = "E"
+                default:
+                    direction = "N"
+                }
+            lblHeading.text = String (format: "%g\u{00B0} {%@}", theHeading, direction)
+            lblHeadingAccuracy.text = String(format: "%g\u{00B0}", newHeading.headingAccuracy)
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: any Error) {
+        let errorType = error._code == CLError.denied.rawValue ? "Location Permission Denied" : "Unknown Error"
+        let alertController = UIAlertController(title: "Error  getting location", message: errorType, preferredStyle: .alert)
+        let actionOK = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(actionOK)
+        present(alertController,animated: true , completion: nil)
+    }
     
 
 
 
     @IBAction func addressToCoordinates(_ sender: Any) {
-        let address = "\(txtStreet.text!), \(txtCity.text!), \(txtState.text!)"
+        guard let street = txtStreet.text, !street.isEmpty,
+                let city = txtCity.text, !city.isEmpty,
+                let state = txtState.text, !state.isEmpty else {
+              return
+          }
+
+          let address = "\(street), \(city), \(state)"
         geoCoder.geocodeAddressString(address) { (placemarks, error) in
             self.processAddressResponse(withPlacemarks: placemarks, error: error)
         }
@@ -104,7 +147,7 @@ class LocationDemoViewController:
         locationManager.stopUpdatingHeading()
     }
     
-
+    
 
     
 

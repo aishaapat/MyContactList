@@ -6,24 +6,31 @@
 //
 
 import UIKit
+import CoreLocation
+import MapKit
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController , CLLocationManagerDelegate{
+    @IBAction func findUser(_ sender: Any) {
+        mapView.showsUserLocation = true
+        mapView.setUserTrackingMode(.follow, animated: true)
+    }
+    @IBOutlet weak var findUser: UIButton!
+    @IBOutlet weak var mapView: MKMapView!
+    var locationManager: CLLocationManager!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        locationManager = CLLocationManager()
 
-        // Do any additional setup after loading the view.
+        locationManager.delegate = self
+
+        locationManager.requestWhenInUseAuthorization()
+    
     }
+
+
+    
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
