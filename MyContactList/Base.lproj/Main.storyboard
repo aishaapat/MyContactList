@@ -571,31 +571,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oh7-hz-4PW">
-                                <rect key="frame" x="0.0" y="0.0" width="417" height="703"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oh7-hz-4PW">
+                                <rect key="frame" x="0.0" y="0.0" width="417" height="704"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="393" id="RLi-6Q-MSq"/>
                                     <constraint firstAttribute="height" constant="704" id="kGC-AZ-u0x"/>
                                 </constraints>
                                 <standardMapConfiguration key="preferredConfiguration"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nZL-Yj-e7U">
-                                <rect key="frame" x="259" y="51" width="90" height="35"/>
+                                <rect key="frame" x="163" y="51" width="186" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Find Me!"/>
                                 <connections>
                                     <action selector="findUser:" destination="3J2-SP-ywk" eventType="touchUpInside" id="xdm-rx-l9u"/>
                                 </connections>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="mZH-fR-CEO">
+                                <rect key="frame" x="163" y="644" width="227" height="31"/>
+                                <segments>
+                                    <segment title="Hybrid"/>
+                                    <segment title="Standard"/>
+                                    <segment title="Satellite"/>
+                                </segments>
+                                <connections>
+                                    <action selector="mapTypeChanged:" destination="3J2-SP-ywk" eventType="valueChanged" id="YRy-M0-lll"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="yFX-O2-HfG"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="mZH-fR-CEO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="nZL-Yj-e7U" secondAttribute="leading" id="1pw-Ah-1Ud"/>
                             <constraint firstItem="Oh7-hz-4PW" firstAttribute="leading" secondItem="ETr-G8-Iqp" secondAttribute="leading" id="28S-7W-N5e"/>
+                            <constraint firstItem="yFX-O2-HfG" firstAttribute="trailing" secondItem="mZH-fR-CEO" secondAttribute="trailing" constant="3" id="QM8-kE-hny"/>
                             <constraint firstItem="Oh7-hz-4PW" firstAttribute="top" secondItem="nZL-Yj-e7U" secondAttribute="bottom" constant="-86" id="UIS-ey-deZ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="nZL-Yj-e7U" secondAttribute="trailing" constant="28" id="Vz5-kN-jl2"/>
                             <constraint firstItem="nZL-Yj-e7U" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ETr-G8-Iqp" secondAttribute="leading" constant="20" symbolic="YES" id="cf2-DG-PxG"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Oh7-hz-4PW" secondAttribute="trailing" constant="-40" id="dYT-ez-Twp"/>
+                            <constraint firstItem="yFX-O2-HfG" firstAttribute="bottom" secondItem="mZH-fR-CEO" secondAttribute="bottom" constant="61" id="ipa-3r-7TD"/>
                             <constraint firstItem="Oh7-hz-4PW" firstAttribute="top" secondItem="ETr-G8-Iqp" secondAttribute="top" id="p71-wL-Uev"/>
+                            <constraint firstItem="mZH-fR-CEO" firstAttribute="top" secondItem="nZL-Yj-e7U" secondAttribute="bottom" constant="558" id="wkc-h6-Ju1"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" selectedImage="location.circle" catalog="system" id="cjb-2z-MD9">
@@ -604,6 +619,7 @@
                     <connections>
                         <outlet property="findUser" destination="nZL-Yj-e7U" id="lSB-fk-lze"/>
                         <outlet property="mapView" destination="Oh7-hz-4PW" id="wor-OT-P9B"/>
+                        <outlet property="sgmtMapType" destination="mZH-fR-CEO" id="ZRl-0u-4W1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2cw-AK-BWM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
