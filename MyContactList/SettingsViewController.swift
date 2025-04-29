@@ -9,6 +9,7 @@ import UIKit
 
 class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
+    @IBOutlet weak var lblBattery: UILabel!
     @IBOutlet weak var swAscending: UISwitch!
     @IBOutlet weak var pckSortField: UIPickerView!
 
@@ -18,32 +19,37 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         super.viewDidLoad()
         pckSortField.dataSource = self
         pckSortField.delegate = self
-        let device = UIDevice.current
-        print("Device info: \n Name: \(device.name) \n Model: \(device.model)")
-        let orientation: String
-        switch device.orientation{
-        case .faceDown:
-            orientation = "Face down"
-        case .faceUp:
-            orientation = "Face up"
-        case .portrait:
-            orientation = "Portrait"
-        case .landscapeLeft:
-            orientation = "Landscape left"
-        case .unknown:
-            orientation = "Unknown"
-
-        case .portraitUpsideDown:
-            orientation = "Portrait upside down"
-        case .landscapeRight:
-            orientation = "Landscape right"
-        @unknown default:
-            fatalError( "Unknown orientation")
         
-        }
-        print ("Orientation: \(orientation)")
+        UIDevice.current.isBatteryMonitoringEnabled = true
+        NotificationCenter.default.addObserver(self, selector: #selector(self.batteryChanged), name: UIDevice.batteryStateDidChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.batteryChanged), name: UIDevice.batteryLevelDidChangeNotification, object: nil)
+        self.batteryChanged()
+      
     }
-
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        UIDevice.current.isBatteryMonitoringEnabled = false
+    }
+    @objc func batteryChanged(){
+        let device = UIDevice.current
+        var batteryState: String
+        switch(device.batteryState){
+        case .charging:
+            batteryState = "+"
+        case .full:
+            batteryState = "!"
+        case .unplugged:
+            batteryState = "-"
+        case .unknown:
+            batteryState = "?"
+        @unknown default:
+            fatalError()
+        }
+        let batteryLevelPercent = device.batteryLevel * 100
+        let batteryLevel = String (format: "%.0f%%", batteryLevelPercent)
+        let batteryStatus = "\(batteryLevel) (\(batteryState)"
+        lblBattery.text = batteryStatus
+    }
     // MARK: - UIPickerViewDataSource
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1

@@ -342,11 +342,19 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wmn-lK-QX9">
+                                <rect key="frame" x="314.66666666666669" y="89" width="41.333333333333314" height="20.333333333333329"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="FNC-GN-ljE"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="idg-ok-gxf" firstAttribute="width" secondItem="dFN-QU-lWP" secondAttribute="width" multiplier="0.814249" id="8Rm-uy-Y0g"/>
+                            <constraint firstAttribute="trailing" secondItem="Wmn-lK-QX9" secondAttribute="trailing" constant="37" id="DHN-bx-wPA"/>
+                            <constraint firstItem="Wmn-lK-QX9" firstAttribute="top" secondItem="dFN-QU-lWP" secondAttribute="top" constant="89" id="JVv-7m-oDS"/>
                             <constraint firstItem="idg-ok-gxf" firstAttribute="centerX" secondItem="dFN-QU-lWP" secondAttribute="centerX" id="LRU-Ul-FVF"/>
                             <constraint firstItem="FNC-GN-ljE" firstAttribute="bottom" secondItem="idg-ok-gxf" secondAttribute="bottom" constant="140.66666666666674" id="VO2-rL-3RD"/>
                             <constraint firstItem="idg-ok-gxf" firstAttribute="top" secondItem="FNC-GN-ljE" secondAttribute="top" constant="209" id="dHk-aU-glz"/>
@@ -354,6 +362,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" selectedImage="SettingsIcon" id="e6l-5d-0fa"/>
                     <connections>
+                        <outlet property="lblBattery" destination="Wmn-lK-QX9" id="E2C-dW-jJ9"/>
                         <outlet property="pckSortField" destination="cle-fG-KJ1" id="Ivu-66-eF3"/>
                         <outlet property="swAscending" destination="cWr-A4-Sxd" id="rNp-Mz-Led"/>
                     </connections>
@@ -634,6 +643,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Birthdate" id="D9S-Ts-KsO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="iCk-yZ-uEQ">
+                        <rect key="frame" x="0.0" y="118" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
