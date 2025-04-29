@@ -18,6 +18,30 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         super.viewDidLoad()
         pckSortField.dataSource = self
         pckSortField.delegate = self
+        let device = UIDevice.current
+        print("Device info: \n Name: \(device.name) \n Model: \(device.model)")
+        let orientation: String
+        switch device.orientation{
+        case .faceDown:
+            orientation = "Face down"
+        case .faceUp:
+            orientation = "Face up"
+        case .portrait:
+            orientation = "Portrait"
+        case .landscapeLeft:
+            orientation = "Landscape left"
+        case .unknown:
+            orientation = "Unknown"
+
+        case .portraitUpsideDown:
+            orientation = "Portrait upside down"
+        case .landscapeRight:
+            orientation = "Landscape right"
+        @unknown default:
+            fatalError( "Unknown orientation")
+        
+        }
+        print ("Orientation: \(orientation)")
     }
 
     // MARK: - UIPickerViewDataSource
@@ -60,5 +84,6 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         settings.set(swAscending.isOn, forKey: Constants.ksortDirectionAscending)
         settings.synchronize()
     }
+
     
 }

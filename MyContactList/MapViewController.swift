@@ -55,6 +55,7 @@ class MapViewController: UIViewController , CLLocationManagerDelegate, MKMapView
         mp.title = "You"
         mp.subtitle = "Are Here"
         mapView.addAnnotation(mp)
+    
     }
     override func viewWillAppear(_ animated: Bool)
     {
@@ -93,8 +94,10 @@ class MapViewController: UIViewController , CLLocationManagerDelegate, MKMapView
             
             if let coordinate = bestMatch?.coordinate {
                 let mp = MapPoint(latitude: coordinate.latitude, longitude: coordinate.longitude)
-                mp.title = contact.contactName
                 mp.subtitle = contact.streetAddress
+                mp.subtitle2 = contact.email
+                mp.title = "\(contact.contactName ?? " ") \n \(mp.subtitle ?? " ") \n \(mp.subtitle2 ?? " ")"
+                
                 mapView.addAnnotation(mp)
             } else {
                 print("Did not find matching locations")

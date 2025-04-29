@@ -26,11 +26,10 @@ class LocationDemoViewController:
     var locationManager: CLLocationManager!
     
     override func viewDidLoad() {
-        lblHeading.text = ""
         lblAltitude.text = ""
         lblLatitude.text = ""
         lblLongitude.text = ""
-        lblHeadingAccuracy.text = ""
+        
         lblAltitudeAccuracy.text = ""
         lblLocationAccuracy.text = ""
         
