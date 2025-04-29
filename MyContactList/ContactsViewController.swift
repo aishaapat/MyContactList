@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class ContactsViewController: UIViewController, UITextFieldDelegate, DateControllerDelegate {
+class ContactsViewController: UIViewController, UITextFieldDelegate, DateControllerDelegate, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
     func dataChanged(date: Date) {
         if currentContact == nil{
             let context = appDelegate.persistentContainer.viewContext
@@ -27,6 +27,31 @@ class ContactsViewController: UIViewController, UITextFieldDelegate, DateControl
     var currentContact: Contact?
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
+    @IBAction func changePicture(_ sender: Any)
+    {
+        if UIImagePickerController.isSourceTypeAvailable(.camera){
+            let cameraController = UIImagePickerController()
+            cameraController.sourceType = .camera
+            cameraController.delegate = self
+            cameraController.allowsEditing = true
+            self.present(cameraController, animated: true, completion: nil)
+        }
+    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]){
+        if let image = info[.editedImage] as? UIImage{
+            imgContactPicture.contentMode = .scaleAspectFit
+            if currentContact == nil {
+            let context = appDelegate.persistentContainer.viewContext
+            currentContact = Contact(context: context)
+            }
+            currentContact?.image = image.jpegData(compressionQuality: 1.0)
+            imgContactPicture.image = image
+        }
+        dismiss(animated: true, completion: nil)
+        
+    }
+    
+    @IBOutlet weak var imgContactPicture: UIImageView!
     @IBOutlet weak var sgmtEditMode: UISegmentedControl!
     @IBOutlet weak var btnChange: UIButton!
     @IBOutlet weak var lblBirthdaye: UILabel!
@@ -77,6 +102,10 @@ class ContactsViewController: UIViewController, UITextFieldDelegate, DateControl
             if currentContact!.birthday != nil {
                 lblBirthdaye.text = formatter.string(from: currentContact!.birthday!)
             }
+            if let imageData = currentContact?.image {
+                imgContactPicture.image = UIImage(data: imageData)
+            }
+
         }
         
         changeEditMode(self)
@@ -96,7 +125,7 @@ class ContactsViewController: UIViewController, UITextFieldDelegate, DateControl
             let context = appDelegate.persistentContainer.viewContext
             currentContact = Contact(context: context)
         }
-
+      
         switch textField {
         case txtName:
             currentContact?.contactName = textField.text
