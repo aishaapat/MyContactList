@@ -147,6 +147,11 @@ class ContactsViewController: UIViewController, UITextFieldDelegate, DateControl
             if currentContact!.birthday != nil {
                 lblBirthdaye.text = formatter.string(from: currentContact!.birthday!)
             }
+            let longPress = UILongPressGestureRecognizer.init(target: self,
+
+            action: #selector(callPhone(gesture:)))
+
+            txtCell.addGestureRecognizer(longPress)
     
 
           
