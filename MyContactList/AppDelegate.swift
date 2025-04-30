@@ -7,12 +7,13 @@
 
 import UIKit
 import CoreData
+import CoreMotion
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate
 {
     
-    
+    lazy var motionManager = CMMotionManager()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
