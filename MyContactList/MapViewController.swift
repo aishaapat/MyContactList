@@ -61,7 +61,7 @@ class MapViewController: UIViewController , CLLocationManagerDelegate, MKMapView
     {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
-        let request = NSFetchRequest<NSManagedObject>(entityName: "Contact")
+        let request = NSFetchRequest<Contact>(entityName: "Contact")
         var fetchedObjects: [NSManagedObject] = []
         do {
             fetchedObjects = try context.fetch(request)
@@ -94,9 +94,9 @@ class MapViewController: UIViewController , CLLocationManagerDelegate, MKMapView
             
             if let coordinate = bestMatch?.coordinate {
                 let mp = MapPoint(latitude: coordinate.latitude, longitude: coordinate.longitude)
-                mp.subtitle = contact.streetAddress
-                mp.subtitle2 = contact.email
-                mp.title = "\(contact.contactName ?? " ") \n \(mp.subtitle ?? " ") \n \(mp.subtitle2 ?? " ")"
+                mp.title = contact.contactName
+                mp.subtitle = contact.email 
+
                 
                 mapView.addAnnotation(mp)
             } else {
